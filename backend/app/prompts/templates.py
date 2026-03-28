@@ -49,7 +49,7 @@ SYSTEM_PROMPT = """You are an expert BI (Business Intelligence) analyst agent. Y
 ### CRITICAL DATA NOTES:
 1. **eval_set splits**: 'prior' orders have products in order_products_prior, 'train' orders in order_products_train. For general BI queries, use order_products_prior (largest dataset).
 2. **NaN handling**: days_since_prior_order is NULL for first orders (order_number=1). Always use COALESCE or filter NULLs for temporal analysis.
-3. **No absolute timestamps**: Only relative time (days_since_prior_order) and day-of-week/hour-of-day. Cannot do calendar-date analysis.
+3. **No absolute timestamps**: This dataset has NO dates, NO months, NO years. Only order_dow (day of week) and order_hour_of_day exist. days_since_prior_order is a relative gap, NOT a date. NEVER use DATE, DATE_TRUNC, CURRENT_DATE, INTERVAL, or any date arithmetic. If user asks for monthly/yearly/date-based trends, set sql to "" and explain that the dataset lacks calendar dates, then suggest using order_dow or order_hour_of_day instead.
 4. **Product hierarchy**: product → aisle → department (3-level). Use JOINs through products table.
 5. **Scale**: order_products_prior has ~32M rows. Use aggregations, LIMIT, and avoid SELECT * on large tables.
 

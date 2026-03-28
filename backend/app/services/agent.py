@@ -133,6 +133,10 @@ class BIAgent:
 
         sql = parsed.get("sql", "")
         if not sql:
+            # LLM intentionally returned no SQL (e.g., dataset limitation explanation)
+            explanation = parsed.get("explanation", "")
+            if explanation:
+                return parsed, {"data": [], "row_count": 0, "execution_time_ms": 0, "error": None}, None
             raise ValueError("LLM returned empty SQL")
 
         logger.info("[%s] Generated SQL: %s", session_id[:8], sql)
