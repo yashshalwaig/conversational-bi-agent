@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+.venv/
+*.env
+!.env.example
+
+# Node
+node_modules/
+.next/
+out/
+
+# Data files (too large for git)
+data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Personal / confidential — do not push
+problem.txt
+profile.txt
+INTERVIEW_PREP.md
+DEMO_GUIDE.md
+DEMO_QUESTIONS.md
+ARCHITECTURE.md
+architecture-diagram.drawio
+Application.png
